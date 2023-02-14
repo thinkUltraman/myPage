@@ -1,0 +1,88 @@
+/* @import url("https://fonts.googleapis.com/css?family=Muli&display=swap"); */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  /* 弹性盒子 */
+  display: flex;
+  /* 垂直方向居中 */
+  align-items: center;
+  /* 水平方向居中 */
+  justify-content: center;
+  /* 可见高度100%，没有内容时， 该元素会被撑开屏幕高度一致*/
+  height: 100vh;
+  overflow: hidden;
+  /* 外边距 0px */
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  /* 可见宽度 90% */
+  width: 90vw;
+}
+
+.panel {
+  /* 缩放背景图片以完全覆盖背景区，可能背景图片部分看不见 */
+  font-variant: JIS90;
+  background-size: cover;
+  /* 为每一个背景图片设置初始位置 */
+  background-position: center;
+  /* 定义背景图像的重复方式 */
+  background-repeat: no-repeat;
+  height: 81vh;
+  /* 设置元素的外边框圆角 */
+  border-radius: 50px;
+  color: #fff;
+  /* 设置光标的类型 */
+  cursor: pointer;
+  /* 设置了弹性项目如何增大或缩小以适应其弹性容器中可用的空间 */
+  /* 没有激活的空间占0.5 */
+  flex: 0.5;
+  /* 外边距 */
+  margin: 10px;
+  /* 指定一个元素在文档中的定位方式 */
+  position: relative;
+  /* 动画效果 */
+  -webkit-transition: all 700ms ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  /* H3标签位置采用绝对定位 */
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  /* 不透明度 0.0 到 1.0 范围内的数字值 */
+  /* 没有选中的，透明 */
+  opacity: 0;
+}
+
+.panel.active {
+  /* 设置了弹性项目如何增大或缩小以适应其弹性容器中可用的空间 */
+  /* 激活的空间占5 */
+  flex: 5;
+}
+
+.panel.active h3 {
+  /* 选中的 不透明 */
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+/* 基于一个或多个媒体查询的结果来应用样式表的一部分 */
+/* 480px以下的屏幕 */
+@media (max-width: 480px) {
+  /* 容器的可视宽度100% */
+  .container {
+    width: 100vw;
+  }
+  /* 第4/5个元素不显示 */
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
